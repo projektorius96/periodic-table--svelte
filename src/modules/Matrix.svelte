@@ -24,3 +24,6 @@ let prevRow = 0; // prevent zero due to zero-based array
 </tr>
 {/each}
 
+<style>
+  @import './css/home.css'; /* it thinks as if you importing this being on index.html within /dist (/dist is served by devServer) */
+</style>

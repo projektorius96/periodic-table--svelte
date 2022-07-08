@@ -7,35 +7,41 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devtool: 'eval-cheap-source-map',
-    devServer: {
+  devServer: {
         static: path.resolve(__dirname, 'dist'),
         port: process.env.PORT || 8282, /* default : 8080 */
+        // stack overflow solutions [DIDN'T WORK]
+/*         historyApiFallback: {
+          index: true
+        }, */
         devMiddleware: {
             writeToDisk: false, /* refer for explanation : 
             @ https://github.com/webpack/webpack-dev-middleware#writetodisk 
             @ https://dev.to/projektorius96/webpack-devserver-26g7
             */
+            // stack overflow solutions [DIDN'T WORK]
+            // headers: {"X-Content-Type-Options":"nosniff"},
+            // mimeTypes: {html: "text/html", css: "text/css", js: "application/javascript"}
     },
   },
   module: {
     rules: [
+      /* rules specificity up-dated from : @https://github.com/sveltejs/svelte-loader */
       {
-        test: /\.svelte$/,
-        loader: 'svelte-loader',
-        /*// to use following, please do "npm i svelte-preprocess" :         
-          options: {
-          preprocess:  require('svelte-preprocess')({})
-        } */
+        test: /\.(html|svelte)$/,
+        use: 'svelte-loader'
       },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'] /* load order (index): [1] -> [0] : first import then inject not opposite way i.e. reverser order */
-      },
-      /* {another rule (if any)} */
-    ]
+        // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
+        test: /node_modules\/svelte\/.*\.m?js$/,
+        resolve: {
+          fullySpecified: false
+        },
+      }
+    ],
   },
   resolve: {
     extensions: [
@@ -44,6 +50,6 @@ const config = {
       '.svelte'
     ]
   },
-};
+}
 
 module.exports = config;
