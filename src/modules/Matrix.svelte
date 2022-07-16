@@ -3,6 +3,7 @@ import {default as rows, /* hereinafter (non-defaults): */ptable} from "./entrie
 import Element from './Element.svelte'
 
 // $: console.log("rowRef: ", rowRef, "cellRef: ", rowRef?.firstElementChild)
+$: console.log("elements (object): ", ptable.elements)
 
 // DEBUGGING HELPERS :
 // window.rows = rows

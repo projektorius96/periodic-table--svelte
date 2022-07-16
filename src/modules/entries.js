@@ -19,6 +19,24 @@ export let ptable = {
         "XVII":"element",
         "XVIII":"element",
         },
+    elements: {
+        '1' : {
+            "alias" : "H",
+            "name" : "Hydrogen",
+            "weight" : "1.0079",
+        },
+        '2' : {
+            "alias" : "He",
+            "name" : "Helium",
+            "weight" : "4.0026",
+        },
+        '3' : {
+            "alias" : "Li",
+            "name" : "Lithium",
+            "weight" : "6.9410",
+        },
+        // etc.
+    }
 }
 
 export default /* let res  = */ Array(7).fill({}).map((rows)=>{
