@@ -1,5 +1,6 @@
 <script>
 import {default as rows, /* hereinafter (non-defaults): */ptable} from "./entries.js"; // console.log(rows); # [PASSED]
+import Element from './Element.svelte'
 
 // $: console.log("rowRef: ", rowRef, "cellRef: ", rowRef?.firstElementChild)
 
@@ -18,6 +19,7 @@ let prevRow = 0; // prevent zero due to zero-based array
     <!-- {console.log(col)} -->
     No.{col.replace('element', `${prevRow += 1}`)}
     <!-- inner Svelte component with its styling -->
+    <Element />
   </span>
   {/each}
 </span>
@@ -25,4 +27,8 @@ let prevRow = 0; // prevent zero due to zero-based array
 
 <style>
   @import './css/home.css'; /* it thinks as if you importing this being on index.html within /dist (/dist is served by devServer) */
+  /* -- */
+  .element-col {
+        border: 1px solid black;
+    }
 </style>

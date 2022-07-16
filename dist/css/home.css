@@ -16,13 +16,13 @@
   #periodic-table {
     display: grid;
     width: calc(var(--fluid-container-width) * 1);
-    border: 2px solid red;
+    /* border: 2px solid red; */
   }
   
   #data-table {
     display: inherit;
     justify-items: center;
-    border: 2px solid rgb(0, 183, 255);
+    /* border: 2px solid rgb(0, 183, 255); */
   }
   
   .element-row {
@@ -35,7 +35,7 @@
   .element-row > .element-col {
     width: inherit;
     justify-content: center;
-    text-align: center; /* helper */
+    text-align: left; /* Element No.<n> */
     /* width: calc( var(--boxed-container-width) / 4 ); */ /* prevent inflexible units such as pixels (px) */
     /* word-wrap: break-word; */ /* crucial line ! */
   }
