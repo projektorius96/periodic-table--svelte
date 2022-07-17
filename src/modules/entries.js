@@ -35,7 +35,21 @@ export let ptable = {
             "name" : "Lithium",
             "weight" : "6.9410",
         },
-        // etc.
+        // '<n>' : etc.
+    },
+    skipRanges: { /* NOTE : herein each key of the object will be targeting to zero-based array index */
+        "0" : {
+            "from": 2,
+            "to" : 17 /* [inclusively] */
+        },
+        "1" : {
+            "from": 5,
+            "to" : 14 /* [inclusively] */
+        },
+        "2" : {
+            "from": 13,
+            "to" : 22 /* [inclusively] */
+        },
     }
 }
 
