@@ -51,7 +51,9 @@ afterUpdate(()=>{
   /* --- */
   document.getElementsByName('no').forEach((val, idx)=>{
     // console.log("valkilmer", val)
-    val.textContent = (parseInt(val.textContent)-stRowOffset)
+    if (parseInt(val.textContent) != 1) {
+        val.textContent = (parseInt(val.textContent)-stRowOffset)
+    }
   })
 
 })
