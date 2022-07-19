@@ -37,7 +37,8 @@ onMount(()=>{
       // console.log("exploiting idx (totalRange[idx]): ", totalRange[--idx]);
       if (x == parseInt(val.id)) {
         // console.log("at least", true, "as matches", val);
-        val.style.display = "none"
+        val.style.display = "none";
+        val.parentElement.style.visibility = "hidden";
       }
     })
   })
