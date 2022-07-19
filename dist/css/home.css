@@ -27,16 +27,15 @@
   
   .element-row {
     display: flex;
-    width: 80%;
-  /*   justify-self: center;
-    justify-content: space-evenly; */
+    width: calc( var(--fluid-container-width) - 20% );
+    justify-content: space-between;
+    /* justify-content: stretch; */
+    /* gap: 0% 0%; */ /* [DEFAULT] */
   }
   
   .element-row > .element-col {
-    width: inherit;
-    justify-content: center;
+    width: calc( (var(--fluid-container-width) - 20%) / 18 ); /* 18 elements per row */
     text-align: left; /* Element No.<n> */
-    /* width: calc( var(--boxed-container-width) / 4 ); */ /* prevent inflexible units such as pixels (px) */
     /* word-wrap: break-word; */ /* crucial line ! */
   }
 

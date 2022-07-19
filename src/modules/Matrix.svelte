@@ -32,7 +32,7 @@ onMount(()=>{
     // console.log("range value (val): ", val)
     // console.log("range index (idx)-to-span#idx", document.getElementById('data-table').children.namedItem('1').children[++idx])
     // idiomatic "if" :
-    parseInt(element.id) == rangeValue ? element.style.display = "none" : element.style.display = "inline-block" ; // NOTE : later will fix with flex
+    parseInt(element.id) == rangeValue ? element.style.display = "none" : element.style.display = "inline" ; // NOTE : later will fix with flex
   })
 })
 
