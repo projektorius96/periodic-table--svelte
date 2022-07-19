@@ -19,10 +19,11 @@ let {skipRange: thirdRow} = new getInterval(ptable.skipRanges[2].from, 1, ptable
 let totalRange = [...firstRow, ...secondRow, ...thirdRow]; console.log(totalRange);
 // ...
 let allHTMLElements = [];
-let allreHTMLElements = [];
+let stRowOffset = firstRow.length
 
 // HELPER :
 window.allHTMLElements = allHTMLElements
+window.firstRow = firstRow.length
 
 afterUpdate(()=>{
   console.log("afterUpdate", allHTMLElements)
@@ -34,7 +35,8 @@ afterUpdate(()=>{
   firstRow.forEach((x, z)=>{
     allHTMLElements.splice(x, 1)
     document.getElementsByName('element').forEach((val, idx)=>{
-
+      console.log(idx);
+      // console.log("papa", val.parentElement.firstElementChild)
       if ((x == totalRange[0]) && (val.computedStyleMap().get('visibility').value === "hidden")) {
         console.log("HIDDEN", val);
       } 
@@ -46,21 +48,12 @@ afterUpdate(()=>{
 
     })
   })
-  // document.getElementsByName("element").forEach((val, idx)=>{
-  //   // allHTMLElements.push(val)
-  //   console.log("idx, allHTMLElements[idx] (afterUpdate)", idx, allHTMLElements[idx])
-  //   // console.log("parent: ", val.parentElement/* .id */, "at (index): ", idx)
-  //   // console.log(val.computedStyleMap().get('display').value)
-  //   // console.log(val.computedStyleMap().get('display').value === "block");
-  //   /* --- */
-  //   // if (val.computedStyleMap().get('display').value === "block") {
-  //   //   console.log("match", val.parentElement.firstElementChild.textContent, ++idx)
-  //   //   val.parentElement.firstElementChild.textContent = idx
-  //   // }
-  //   // else {
-  //   //   val.parentElement.firstElementChild.textContent = 0;
-  //   // }
-  // })
+  /* --- */
+  document.getElementsByName('no').forEach((val, idx)=>{
+    // console.log("valkilmer", val)
+    val.textContent = (parseInt(val.textContent)-stRowOffset)
+  })
+
 })
 
 // Once Original Matrix loaded (mounted) by Svelte, do the modifications : 
