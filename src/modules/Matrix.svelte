@@ -14,26 +14,50 @@ let colID = 0;
 let {skipRange: firstRow} = new getInterval(ptable.skipRanges[0].from, 1, ptable.skipRanges[0].to, true, skippedValues([]))
 let {skipRange: secondRow} = new getInterval(ptable.skipRanges[1].from, 1, ptable.skipRanges[1].to, true, skippedValues([]))
 let {skipRange: thirdRow} = new getInterval(ptable.skipRanges[2].from, 1, ptable.skipRanges[2].to, true, skippedValues([]))
+let toSecondRedir = [];
+let allHTMLElements = [];
+
+// HELPER :
+window.toSecondRedir = toSecondRedir
+window.allHTMLElements = allHTMLElements
 
 // Once Original Matrix loaded (mounted) by Svelte, do the modifications : 
 onMount(()=>{
   console.log(rows)
   console.log(Array.from(document.getElementById('data-table').children.namedItem('1').children))
   console.log("firstRow, secondRow, thirdRow: ", firstRow, secondRow, thirdRow)
-  /* Existine table (matrix) mods inside Svelte : */
-  // THE APPROACH DID NOT WORK [WILL REMOW WITHIN COUPLE OF COMMITS] :
-  // Array.from(document.getElementById('data-table').children.namedItem('1').children).forEach((val, idx)=>{
-  //   console.log("firstRow[idx]: ", firstRow[idx])
-  //   console.log("index (idx): ", idx, "value (val): ", val, "value.id (val.id):", val.id)
-  //   firstRow[idx] == val.id ? val.style.display = "none" : val.style.display = "inline-block"  
-  // })
+  /* Existing table (matrix) mods inside Svelte : */
   firstRow.forEach((rangeValue, idx)=>{
     let element = document.getElementById('data-table').children.namedItem('1').children[++idx]
-    // console.log("range value (val): ", val)
+    console.log("range value (val): ", rangeValue)
     // console.log("range index (idx)-to-span#idx", document.getElementById('data-table').children.namedItem('1').children[++idx])
     // idiomatic "if" :
-    parseInt(element.id) == rangeValue ? element.style.display = "none" : element.style.display = "inline" ; // NOTE : later will fix with flex
+    // parseInt(element.id) == rangeValue ? element.style.display = "none" : element.style.display = "inline" ; // NOTE : later will fix with flex
+    if ((parseInt(element.id) == rangeValue)) {
+      element.style.display = "none"
+      // secondRow[idx] = parseInt(element.id)
+      // console.log("secondRow (after redirection): ", secondRow)
+      toSecondRedir[idx] = parseInt(element.id)
+      console.log("secondRow (after redirection): ", toSecondRedir)
+    }
+    else {element.style.display = "inline"}
   })
+  toSecondRedir.shift() // avoid <empty> i.e. sparsed item[s]
+  toSecondRedir.forEach((val, idx)=>console.log(val, idx))
+  secondRow.forEach((rangeValue, idx)=>{
+    let element = document.getElementById('data-table').children.namedItem('2').children[++idx]
+    console.log("elements (secondRow): ", element)
+    // console.log("range index (idx)-to-span#idx", document.getElementById('data-table').children.namedItem('1').children[++idx])
+    // idiomatic "if" :
+    // parseInt(element.id) == rangeValue ? element.style.display = "none" : element.style.display = "inline" ; // NOTE : later will fix with flex
+  })
+  // thirdRow.forEach((rangeValue, idx)=>{
+  //   let element = document.getElementById('data-table').children.namedItem('3').children[++idx]
+  //   // console.log("range value (val): ", val)
+  //   // console.log("range index (idx)-to-span#idx", document.getElementById('data-table').children.namedItem('1').children[++idx])
+  //   // idiomatic "if" :
+  //   parseInt(element.id) == rangeValue ? element.style.display = "none" : element.style.display = "inline" ; // NOTE : later will fix with flex
+  // })
 })
 
 </script>
