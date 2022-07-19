@@ -43,12 +43,12 @@ export let ptable = {
             "to" : 17 /* [inclusively] */
         },
         "1" : {
-            "from": 5,
-            "to" : 14 /* [inclusively] */
+            "from": 21,
+            "to" : 30 /* [inclusively] */
         },
         "2" : {
-            "from": 13,
-            "to" : 22 /* [inclusively] */
+            "from": 39,
+            "to" : 48 /* [inclusively] */
         },
     }
 }
