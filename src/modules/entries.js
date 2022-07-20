@@ -35,7 +35,12 @@ export let ptable = {
             "name" : "Lithium",
             "weight" : "6.9410",
         },
-        // '<n>' : etc.
+        // '<n>' : etc...
+        '110' : { /* last item in the main table */
+            "alias" : "Li",
+            "name" : "Lithium",
+            "weight" : "6.9410",
+        },
     },
     skipRanges: { /* NOTE : herein each key of the object will be targeting to zero-based array index */
         "0" : {
@@ -54,7 +59,7 @@ export let ptable = {
 }
 
 export default /* let res  = */ Array(7).fill({}).map((rows)=>{
-return rows = ptable.template;
+    return rows = ptable.template;
 })
 
 // console.log(res)

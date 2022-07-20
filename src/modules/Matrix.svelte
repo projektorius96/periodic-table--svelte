@@ -6,8 +6,12 @@ import {default as rows, /* hereinafter (non-defaults): */ptable} from "./entrie
 import { binding_callbacks } from 'svelte/internal';
 
 // $: console.log("rowRef: ", rowRef, "cellRef: ", rowRef?.firstElementChild)
-// console.log("ptable.elements: ", ptable.elements)
+console.log("ptable.elements: ", ptable.elements)
 // console.log("ptable.skipRanges: ", ptable.skipRanges)
+
+let alias = ["Go", "JS"]
+let name = "Johnny"
+let weight = "123"
 
 let prevRow = 0; // prevent zero due to zero-based array
 let rowID = 0;
@@ -19,14 +23,16 @@ let {skipRange: thirdRow} = new getInterval(ptable.skipRanges[2].from, 1, ptable
 let totalRange = [...firstRow, ...secondRow, ...thirdRow]; console.log(totalRange);
 // ...
 let allHTMLElements = [];
+let onlyVisibleElements = [];
 let stRowOffset = firstRow.length
 
 // HELPER :
 window.allHTMLElements = allHTMLElements
+window.onlyVisibleElements = onlyVisibleElements
 window.firstRow = firstRow.length
 
 afterUpdate(()=>{
-  console.log("afterUpdate", allHTMLElements)
+  console.log("afterUpdate")
   /*   
   (Array.from(document.getElementsByClassName('element-col'))).forEach((val, index)=>{
     if (val.style.visibility === "hidden") console.log(val)
@@ -35,14 +41,15 @@ afterUpdate(()=>{
   firstRow.forEach((x, z)=>{
     allHTMLElements.splice(x, 1)
     document.getElementsByName('element').forEach((val, idx)=>{
-      console.log(idx);
+      // console.log(idx);
       // console.log("papa", val.parentElement.firstElementChild)
       if ((x == totalRange[0]) && (val.computedStyleMap().get('visibility').value === "hidden")) {
-        console.log("HIDDEN", val);
+        //console.log("HIDDEN", val);
       } 
       else {
         if ((x == totalRange[0]) && (val.computedStyleMap().get('visibility').value === "visible")) {
-        console.log("VISIBLE", val);
+        //console.log("VISIBLE", val);
+        onlyVisibleElements.push(val)
         }
       }
 
@@ -50,12 +57,16 @@ afterUpdate(()=>{
   })
   /* --- */
   document.getElementsByName('no').forEach((val, idx)=>{
-    // console.log("valkilmer", val)
+    console.log("len: ", ([].push(idx)).length)
     if (parseInt(val.textContent) != 1) {
         val.textContent = (parseInt(val.textContent)-stRowOffset)
     }
   })
-
+  /* --- */
+  // onlyVisibleElements[1].parentElement.firstChild.textContent
+  onlyVisibleElements.forEach((val, idx)=>{
+    console.log("kilmer says: ", val.parentElement.firstChild.textContent);
+  })
 })
 
 // Once Original Matrix loaded (mounted) by Svelte, do the modifications : 
@@ -110,8 +121,7 @@ onMount(()=>{
   <span id={colID += 1} class="element-col">
     <!-- {console.log(col)} -->
     <p name="no">{col.replace('element', `${prevRow += 1}`)}</p>
-    <!-- inner Svelte component with its styling -->
-    <Element />
+    <Element alias={"A"} name={"N"} weight={"W"} />
   </span>
   {/each}
 </span>

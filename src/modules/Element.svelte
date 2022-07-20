@@ -1,11 +1,14 @@
 <script>
     // ...
+    export let alias;
+    export let name;
+    export let weight;
 </script>
 
 <div id="element" name="element">
-    <p>XXX</p>
-    <p>xxx</p>
-    <p>000</p>
+    <p>{alias}</p>
+    <p>{name}</p>
+    <p>{weight}</p>
 </div>
 
 <style>
