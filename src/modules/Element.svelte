@@ -1,8 +1,8 @@
 <script>
     // ...
-    export let alias;
-    export let name;
-    export let weight;
+    export let alias = "John";
+    export let name = "Doe";
+    export let weight = "101";
 </script>
 
 <div id="element" name="element">

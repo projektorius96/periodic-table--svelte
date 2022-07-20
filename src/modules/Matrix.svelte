@@ -9,10 +9,6 @@ import { binding_callbacks } from 'svelte/internal';
 console.log("ptable.elements: ", ptable.elements)
 // console.log("ptable.skipRanges: ", ptable.skipRanges)
 
-let alias = ["Go", "JS"]
-let name = "Johnny"
-let weight = "123"
-
 let prevRow = 0; // prevent zero due to zero-based array
 let rowID = 0;
 let colID = 0;
@@ -127,7 +123,7 @@ onMount(()=>{
   <span id={colID += 1} class="element-col">
     <!-- {console.log(col)} -->
     <p name="no">{col.replace('element', `${prevRow += 1}`)}</p>
-    <Element alias={"A"} name={"N"} weight={"W"} />
+    <Element />
   </span>
   {/each}
 </span>

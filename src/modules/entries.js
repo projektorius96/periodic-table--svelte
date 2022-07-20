@@ -36,10 +36,10 @@ export let ptable = {
             "weight" : "6.9410",
         },
         // '<n>' : etc...
-        '110' : { /* last item in the main table */
-            "alias" : "Li",
-            "name" : "Lithium",
-            "weight" : "6.9410",
+        '100' : { /* a draft as a last item in the main table */
+            "alias" : "Fm",
+            "name" : "Fermium",
+            "weight" : "257",
         },
     },
     skipRanges: { /* NOTE : herein each key of the object will be targeting to zero-based array index */
