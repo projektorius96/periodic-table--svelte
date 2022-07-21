@@ -65,10 +65,15 @@ afterUpdate(()=>{
     let {alias, name, weight} = Object.values(ptable.elements)[idx];
     if (idx == Object.keys(ptable.elements)[idx]) {
       // console.log(val.parentElement.firstChild.textContent)
-      console.log("valkilmer", val.children, Object.values(ptable.elements)[idx]);
-      val.children.namedItem('alias').textContent = alias
+      // console.log("valkilmer", val.children, Object.values(ptable.elements)[idx]);
+      
+      // NOTE - only looped items (temp) :
+      if (`${++idx}` >= val.parentElement.firstChild.textContent) {
+        val.style.backgroundColor = "yellow"
+        val.children.namedItem('alias').textContent = alias
       val.children.namedItem('name').textContent = name
       val.children.namedItem('weight').textContent = weight
+      }
     }
   })
 

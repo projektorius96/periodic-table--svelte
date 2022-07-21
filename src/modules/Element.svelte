@@ -6,15 +6,22 @@
 </script>
 
 <div id="element" name="element">
-    <p name="alias">{alias}</p>
+    <h3 name="alias">{alias}</h3>
     <p name="name">{name}</p>
     <p name="weight">{weight}</p>
 </div>
 
 <style>
     [name=element] {
-        /* background-color: yellow; */
         text-align: center; /* single element text alignment */
         word-break: break-all;
+    }
+
+    [name=name] {
+        font-size: x-small;
+    }
+
+    [name=weight] {
+        font-size: small;
     }
 </style>
