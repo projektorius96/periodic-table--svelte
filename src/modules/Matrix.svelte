@@ -23,10 +23,8 @@ let onlyVisibleElements = [];
 let stRowOffset1 = firstRow.length
 let stRowOffset23 = secondRow.length || thirdRow.length;
 
-// HELPER :
-window.allHTMLElements = allHTMLElements
+// TEMP_GLOBALS :
 window.onlyVisibleElements = onlyVisibleElements
-window.firstRow = firstRow.length
 
 afterUpdate(()=>{
   console.log("afterUpdate")
@@ -64,11 +62,16 @@ afterUpdate(()=>{
   })
   /* --- */
   onlyVisibleElements.forEach((val, idx)=>{
-    // console.log("kilmer says: ", val.parentElement.firstChild.textContent); [PASSED]
-    /* if (val.parentElement.firstChild.textContent === each ptable.elements string based id) {
-      than remap each ptable.elements element information to each visible element
-    } */
+    let {alias, name, weight} = Object.values(ptable.elements)[idx];
+    if (idx == Object.keys(ptable.elements)[idx]) {
+      // console.log(val.parentElement.firstChild.textContent)
+      console.log("valkilmer", val.children, Object.values(ptable.elements)[idx]);
+      val.children.namedItem('alias').textContent = alias
+      val.children.namedItem('name').textContent = name
+      val.children.namedItem('weight').textContent = weight
+    }
   })
+
 })
 
 // Once Original Matrix loaded (mounted) by Svelte, do the modifications : 

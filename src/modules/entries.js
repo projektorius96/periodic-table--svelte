@@ -20,26 +20,26 @@ export let ptable = {
         "XVIII":"element",
         },
     elements: {
-        '1' : {
+        '0' : {
             "alias" : "H",
             "name" : "Hydrogen",
             "weight" : "1.0079",
         },
-        '2' : {
+        '1' : {
             "alias" : "He",
             "name" : "Helium",
             "weight" : "4.0026",
         },
-        '3' : {
+        '2' : {
             "alias" : "Li",
             "name" : "Lithium",
             "weight" : "6.9410",
         },
         // '<n>' : etc...
         '100' : { /* a draft as a last item in the main table */
-            "alias" : "Fm",
-            "name" : "Fermium",
-            "weight" : "257",
+            "alias" : "X",
+            "name" : "Y",
+            "weight" : "123",
         },
     },
     skipRanges: { /* NOTE : herein each key of the object will be targeting to zero-based array index */
